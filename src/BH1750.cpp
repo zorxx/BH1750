@@ -111,7 +111,7 @@ bool BH1750::read(double *lux)
          result = Wire.read() << 7;
          value = Wire.read();
          result += value >> 1;
-         result += (value & 0x01) * 0.5;
+         result += (value & 0x01) ? 0.5 : 0;
          break;
       }
       default:
